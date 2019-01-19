@@ -724,7 +724,7 @@ out:
 	btn_wait();
 }
 
-void auto_launch_firmware()
+/*void auto_launch_firmware()
 {
 	auto_launch_update();
 
@@ -970,7 +970,7 @@ out:
 
 	sd_unmount();
 	gfx_con.mute = false;
-}
+}*/
 
 void about()
 {
@@ -1184,7 +1184,7 @@ void ipl_main()
 	//display_backlight_brightness(h_cfg.backlight, 1000);
 
 	// Load saved configuration and auto boot if enabled.
-	auto_launch_firmware();
+	//auto_launch_firmware();
 
 	while (true)
 		tui_do_menu(&gfx_con, &menu_top);

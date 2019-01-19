@@ -61,10 +61,10 @@ OBJS += $(addprefix $(BUILD)/$(TARGET)/, \
 	elfload.o elfreloc_arm.o \
 )
 
-CUSTOMDEFINES := -DBLVERSIONMJ=$(BLVERSION_MAJOR) -DBLVERSIONMN=$(BLVERSION_MINOR) -DMENU_LOGO_ENABLE
-#CUSTOMDEFINES += -DDEBUG
+CUSTOMDEFINES := -DBLVERSIONMJ=$(BLVERSION_MAJOR) -DBLVERSIONMN=$(BLVERSION_MINOR) #-DMENU_LOGO_ENABLE
+CUSTOMDEFINES += -DDEBUG
 # 0: UART_A, 1: UART_B.
-#CUSTOMDEFINES += -DDEBUG_UART_PORT=0
+CUSTOMDEFINES += -DDEBUG_UART_PORT=0
 
 ARCH := -march=armv4t -mtune=arm7tdmi -mthumb -mthumb-interwork
 CFLAGS = $(ARCH) -O2 -nostdlib -ffunction-sections -fdata-sections -fomit-frame-pointer -fno-inline -std=gnu11 -Wall $(CUSTOMDEFINES)
