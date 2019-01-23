@@ -65,6 +65,8 @@ CUSTOMDEFINES := -DBLVERSIONMJ=$(BLVERSION_MAJOR) -DBLVERSIONMN=$(BLVERSION_MINO
 CUSTOMDEFINES += -DDEBUG
 # 0: UART_A, 1: UART_B.
 CUSTOMDEFINES += -DDEBUG_UART_PORT=0
+# Use Jetson TX1 configuration.
+CUSTOMDEFINES += -DCONFIG_JETSON
 
 ARCH := -march=armv4t -mtune=arm7tdmi -mthumb -mthumb-interwork
 CFLAGS = $(ARCH) -O2 -nostdlib -ffunction-sections -fdata-sections -fomit-frame-pointer -fno-inline -std=gnu11 -Wall $(CUSTOMDEFINES)

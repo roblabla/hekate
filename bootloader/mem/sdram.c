@@ -25,18 +25,24 @@
 #include "../power/max77620.h"
 #include "../soc/clock.h"
 
+#ifdef CONFIG_JETSON
+#include "sdram_config_jetson.inl"
+#else
 #define CONFIG_SDRAM_COMPRESS_CFG
-
 #ifdef CONFIG_SDRAM_COMPRESS_CFG
 #include "../libs/compr/lz.h"
 #include "sdram_config_lz.inl"
 #else
 #include "sdram_config.inl"
 #endif
-
+#endif
 static u32 _get_sdram_id()
 {
+#ifdef CONFIG_JETSON
+	return 0;
+#else
 	return (fuse_read_odm(4) & 0x38) >> 3;
+#endif
 }
 
 static void _sdram_config(const sdram_params_t *params)
