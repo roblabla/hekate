@@ -51,6 +51,7 @@
 #define PINMUX_AUX_GPIO_PE6    0x248
 #define PINMUX_AUX_GPIO_PH6    0x250
 #define PINMUX_AUX_GPIO_PZ1    0x280
+#define PINMUX_AUX_GPIO_PZ3    0x288
 /*! 0:UART-A, 1:UART-B, 3:UART-C, 3:UART-D */
 #define PINMUX_AUX_UARTX_TX(x)  (0xE4 + 0x10 * (x))
 #define PINMUX_AUX_UARTX_RX(x)  (0xE8 + 0x10 * (x))

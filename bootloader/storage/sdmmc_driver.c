@@ -940,10 +940,17 @@ static int _sdmmc_config_sdmmc1()
 	PMC(APBDEV_PMC_PWR_DET_VAL) |= (1 << 12);
 
 	//Set enable SD card power.
+#ifdef CONFIG_JETSON
+	PINMUX_AUX(PINMUX_AUX_GPIO_PZ3) = PINMUX_INPUT_ENABLE | PINMUX_PULL_DOWN | 1; //GPIO control, pull down.
+	gpio_config(GPIO_PORT_Z, GPIO_PIN_3, GPIO_MODE_GPIO);
+	gpio_write(GPIO_PORT_Z, GPIO_PIN_3, GPIO_HIGH);
+	gpio_output_enable(GPIO_PORT_Z, GPIO_PIN_3, GPIO_OUTPUT_ENABLE);
+#else
 	PINMUX_AUX(PINMUX_AUX_DMIC3_CLK) = PINMUX_INPUT_ENABLE | PINMUX_PULL_DOWN | 1; //GPIO control, pull down.
 	gpio_config(GPIO_PORT_E, GPIO_PIN_4, GPIO_MODE_GPIO);
 	gpio_write(GPIO_PORT_E, GPIO_PIN_4, GPIO_HIGH);
 	gpio_output_enable(GPIO_PORT_E, GPIO_PIN_4, GPIO_OUTPUT_ENABLE);
+#endif
 
 	usleep(1000);
 
